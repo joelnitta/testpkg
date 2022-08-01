@@ -1,10 +1,12 @@
 library(testthat)
 
-writeLines(c("this", "is", "some", "text"), "test.txt")
-
 test_that("search works", {
-  expect_true(search_gz("is", "test.txt"))
-  expect_false(search_gz("isa", "test.txt"))
+  expect_true(search_gz(
+    "is",
+    system.file("extdata", "test.gz", package = "testpkg")
+    ))
+  expect_false(search_gz(
+    "isnot",
+    system.file("extdata", "test.gz", package = "testpkg")
+    ))
 })
-
-unlink("test.txt")
