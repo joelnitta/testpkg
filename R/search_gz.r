@@ -12,7 +12,7 @@ search_gz <- function(terms, path) {
   if (.Platform$OS.type == "unix") {
     search_command <- "zgrep"
   } else if (.Platform$OS.type == "windows") {
-    search_command <- "grep"
+    search_command <- "bash zgrep"
   } else {
     stop("Platform not unix or windows")
   }
