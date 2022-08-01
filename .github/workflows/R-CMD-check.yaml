@@ -43,10 +43,12 @@ jobs:
         with:
           extra-packages: any::rcmdcheck, any::XML
           needs: check
+
+      - run: git config --global core.autocrlf input
+        if: runner.os == 'Windows'
       
       - uses: cygwin/cygwin-install-action@master
         if: runner.os == 'Windows'
-        run: git config --global core.autocrlf input
 
       - uses: r-lib/actions/check-r-package@v2
         with:
